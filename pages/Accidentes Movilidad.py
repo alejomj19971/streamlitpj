@@ -11,6 +11,8 @@ st.title("Movilidad Incidentes 2022 - Medellín")
 data = pd.read_csv('archivo.csv')
 df = pd.DataFrame(data)
 
+st.write(df)
+
 # Renombramos las columnas latitud y longitud ,para que los datos puedan ser leidos por el componente map
 df = df.rename(columns={'LATITUD': 'LAT'})
 df = df.rename(columns={'LONGITUD': 'LON'})
@@ -18,11 +20,12 @@ df = df.rename(columns={'LONGITUD': 'LON'})
 # Se crean menus desplegables con el nombre mes y día se les pasa en las opciones unos filtros(més y día) del dataframe ordenado en orden ascendente, y sin elementos repetidos
 month = st.selectbox('MES',(df["MES"].sort_values(ascending=True).unique()))  
 day = st.selectbox('DÍA',(df["DIA"].sort_values(ascending=True).unique()))   
-clase = st.selectbox('  CLASE',(df["CLASE"].sort_values(ascending=True).unique()))   
+clase = st.selectbox('CLASE',(df["CLASE"].sort_values(ascending=True).unique()))  
+comuna = st.selectbox('COMUNA',(df["COMUNA"].sort_values(ascending=True).unique()))  
 
 # 
 df['FECHA'] = pd.to_datetime(df['FECHA'])
-filtro = (df['MES'] == month) & (df['DIA'] ==day) & (df['CLASE'] ==clase)
+filtro = (df['MES'] == month) & (df['DIA'] ==day) & (df['CLASE'] ==clase)& (df['COMUNA'] ==comuna)  
 
 # 
 df_filtrado = df.loc[filtro] 
