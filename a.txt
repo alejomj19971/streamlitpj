@@ -1,0 +1,18 @@
+"""
+data = pd.read_csv('archivo.csv')
+
+
+st.title("Ubicación de accidentes en Medellín 2022")
+
+
+st.dataframe(data)
+
+
+# Generar 20 ubicaciones aleatorias en Medellín
+latitudes = np.random.uniform(6.1507, 6.3827, 20)
+longitudes = np.random.uniform(-75.6664, -75.3972, 20)
+
+# Crear un dataframe con las ubicaciones
+ubicaciones = pd.DataFrame({'LAT': latitudes, 'LON': longitudes})
+
+st.map(ubicaciones)"""
