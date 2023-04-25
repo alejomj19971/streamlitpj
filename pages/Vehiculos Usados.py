@@ -21,7 +21,7 @@ kilometros= st.selectbox('KILOMETROS',(df["Kilometres"].sort_values(ascending=Tr
 filtroBarras = (df['Model'] == modelo) & (df['Price;'] ==precio)   
 df_filtradoBarras = df.loc[filtroBarras]
 
-chart_data = pd.DataFrame(df_filtradoBarras)
+chart_data = pd.DataFrame(df_filtradoBarras,"Modelo","Precio",width=5,height=5,use_container_width=True)
 
 st.bar_chart(chart_data)
 
