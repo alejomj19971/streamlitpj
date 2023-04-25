@@ -23,15 +23,15 @@ day = st.selectbox('DÍA',(df["DIA"].sort_values(ascending=True).unique()))
 clase = st.selectbox('CLASE',(df["CLASE"].sort_values(ascending=True).unique()))  
 comuna = st.selectbox('COMUNA',(df["COMUNA"].sort_values(ascending=True).unique()))  
 
-# 
+# se coloca la fecha en un formato que permita la comparación
 df['FECHA'] = pd.to_datetime(df['FECHA'])
 filtro = (df['MES'] == month) & (df['DIA'] ==day) & (df['CLASE'] ==clase)& (df['COMUNA'] ==comuna)  
 
-# 
+# Extraer columnas y filas del dataSet
 df_filtrado = df.loc[filtro] 
 df_filtrado = df_filtrado.loc[:, ['LAT', 'LON']]    
 
-# 
+# se le pasa al mapa los datos
 df = pd.DataFrame(
     df_filtrado,
     columns=['LAT', 'LON'])
