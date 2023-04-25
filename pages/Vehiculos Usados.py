@@ -17,7 +17,13 @@ precio = st.selectbox('PRECIO',(df["Price;"].sort_values(ascending=True).unique(
 marca = st.selectbox('MARCA',(df["Make"].sort_values(ascending=True).unique()))  
 kilometros= st.selectbox('KILOMETROS',(df["Kilometres"].sort_values(ascending=True).unique())) 
 
+#Filtro de barras
+filtroBarras = (df['MODEL'] == modelo) & (df['PRECIO'] ==precio)   
+df_filtradoBarras = df.loc[filtroBarras]
 
+chart_data = pd.DataFrame(df_filtradoBarras)
+
+st.bar_chart(chart_data)
 
 
 
